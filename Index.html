@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akash's Portfolio</title>
+    <!-- Mobile Status Bar Theme Color -->
+    <meta name="theme-color" content="#00b894" id="theme-color-meta">
+    <!-- For iOS: Status Bar Style when added to Home Screen -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Set iOS Safari Status Bar Background Color -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Akash's Portfolio">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Ubuntu:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- FontAwesome Icons -->
+    <style>
+        :root {
+            --theme-color: #00b894; /* Default theme color */
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme-color: #0984e3; /* Dark mode theme color */
+            }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background: linear-gradient(145deg, #00b894, #0984e3);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Rainbow Flicker Animation for Title */
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-family: 'Ubuntu', sans-serif;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            animation: rainbowFlicker 5s ease-out 1;/* Runs once */ finite;
+        }
+
+        /* Rainbow Flicker Animation */
+        @keyframes rainbowFlicker {
+            0% {
+                color: white;
+                background: linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red);
+                -webkit-background-clip: text;
+            }
+            50% {
+                color: transparent;
+                background: linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red);
+                -webkit-background-clip: text;
+            }
+            100% {
+                color: white;
+                background: linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red);
+                -webkit-background-clip: text;
+            }
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-top: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: #0984e3;
+            margin-bottom: 30px;
+        }
+
+        .projects .card {
+            display: inline-block;
+            background: white;
+            width: 250px;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .projects .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .projects .card h3 {
+            font-size: 1.6rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .projects .card p {
+            font-size: 1rem;
+            color: #777;
+        }
+
+        .projects .card .btn {
+            background: linear-gradient(145deg, #00b894, #0984e3);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .blog {
+            background: #e3f6fd;
+            padding: 50px 20px;
+        }
+
+        .blog .post {
+            display: inline-block;
+            width: 300px;
+            background: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog .post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .blog .post h3 {
+            font-size: 1.5rem;
+            color: #333;
+        } 
+        /* Custom styles for IISC Bangalore */
+.iisc-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    color: #2ecc71; /* Green color for attraction */
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.iisc-description {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    color: #555;
+    font-style: italic;
+}
+
+.iisc-info {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    color: #333;
+    margin-top: 20px;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* You can also import the fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Lora:ital@1&family=Poppins:wght@400&display=swap');
+    .collaboration {
+    padding: 50px 20px;
+    background: linear-gradient(145deg, #f3f9fd, #ffffff);
+    text-align: center;
+    color: #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 40px auto;
+    max-width: 800px;
+}
+
+.collaboration h2 {
+    font-size: 2.5rem;
+    color: #0984e3;
+    margin-bottom: 20px;
+}
+
+.collaboration p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.collaboration-container {
+    text-align: center;
+}
+
+.collaboration-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.collaboration-form input,
+.collaboration-form textarea {
+    width: 90%;
+    max-width: 500px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.collaboration-form input:focus,
+.collaboration-form textarea:focus {
+    outline: none;
+    border-color: #00b894;
+    box-shadow: 0px 0px 6px rgba(0, 184, 148, 0.5);
+}
+
+.collaboration-form button {
+    background: linear-gradient(145deg, #00b894, #0984e3);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.collaboration-form button:hover {
+    background: linear-gradient(145deg, #0984e3, #00b894);
+} 
+.collaborator-spotlight {
+    padding: 50px 20px;
+    background: #f7f7f7;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    max-width: 800px;
+    border-radius: 10px;
+}
+
+.collaborator-spotlight h2 {
+    font-size: 2.5rem;
+    color: #0984e3;
+    margin-bottom: 20px;
+}
+
+.collaborator-spotlight .spotlight-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.collaborator-spotlight .collaborator-profile img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.collaborator-spotlight .collaborator-profile h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-top: 10px;
+}
+
+.collaborator-spotlight .collaborator-profile p {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 10px 0;
+}
+
+.collaborator-spotlight button {
+    background: linear-gradient(145deg, #00b894, #0984e3);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.collaborator-spotlight button:hover {
+    background: linear-gradient(145deg, #0984e3, #00b894);
+}
+   /* Testimonial Slide Effect */
+    .testimonials {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .testimonials .testimonial-container {
+        display: flex;
+        transition: transform 1s ease-in-out;
+    }
+
+    .testimonials .testimonial-item {
+        min-width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .testimonials .quote {
+        font-size: 1.2rem;
+        margin: 20px;
+        font-style: italic;
+    }
+    
+     .testimonials {
+        background: linear-gradient(145deg, #00b894, #0984e3); /* Maintain your original gradient */
+        color: white;
+        padding: 50px 20px;
+        position: relative;
+    }
+
+    .testimonials .author {
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+
+        .achievements {
+            background: #fdf5d3;
+            padding: 50px 20px;
+        }
+
+        .achievements .counter {
+            display: inline-block;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .achievements .counter h3 {
+            font-size: 3rem;
+            color: #0984e3;
+            margin: 0;
+        }
+
+        .achievements .counter p {
+            font-size: 1.2rem;
+            margin: 0;
+            color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        /* Parallax scrolling for header */
+        header {
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        /* Fade-in effect (only once) */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Icons Style */
+        .section h2 i {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        /* Portfolio Showcase Styles */
+        .portfolio-showcase {
+            padding: 40px 20px;
+            text-align: center;
+            background: #f7f7f7;
+        }
+
+        .portfolio-showcase h2 {
+            font-size: 2.5rem;
+            color: #0984e3;
+            margin-bottom: 30px;
+        }
+
+        .portfolio-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+        }
+
+        .portfolio-item img, .portfolio-item video {
+            width: 100%;
+            display: block;
+        }
+
+        .portfolio-item video {
+            background: #000;
+        }
+
+        .portfolio-item h3 {
+            font-size: 1.2rem;
+            color: #333;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Akash.jpg" alt="Akash's Profile Picture" class="profile-img" loading="lazy">
+        <h1>Welcome to Akash Research Portfolio</h1>
+        <p>Explore my work on antigravity, astrophysics, and the theory of everything. Dive into my research and discoveries.</p>
+    </header>
+
+    <section class="section projects fade-in" id="projects">
+        <h2><i class="fas fa-rocket"></i> My Research Projects</h2>
+        <div class="card">
+            <h3><i class="fas fa-ufo"></i> Antigravity Theory</h3>
+            <p>Developing new models for the interaction of gravity and quantum fields.</p>
+            <button class="btn">Read More</button>
+        </div>
+        <div class="card">
+            <h3><i class="fas fa-atom"></i> Theory of Everything</h3>
+            <p>Exploring the unification of fundamental forces of nature into one theory.</p>
+            <button class="btn">Read More</button>
+        </div>
+    </section>
+
+    <section class="blog fade-in">
+        <h2><i class="fas fa-book-open"></i> Blog</h2>
+        <div class="post">
+            <h3>Understanding Black Holes</h3>
+            <p>A deep dive into the mysteries of black holes and their properties.</p>
+        </div>
+        <div class="post">
+            <h3>Quantum Gravity</h3>
+            <p>Exploring the frontier of merging quantum mechanics and gravity.</p>
+        </div>
+    </section>
+ 
+       <!-- Portfolio Showcase Section -->
+    <section class="portfolio-showcase fade-in">
+        <h2><i class="fas fa-images"></i> Portfolio Showcase</h2>
+        <div class="portfolio-gallery">
+            <!-- Images -->
+            <div class="portfolio-item">
+                <img src="12.jpg" alt="Project 12">
+                <h3>Project 12</h3>
+            </div>
+            <div class="portfolio-item">
+                <img src="23.jpg" alt="Project 23">
+                <h3>Project 23</h3>
+            </div>
+            
+            <!-- Videos -->
+            <div class="portfolio-item">
+                <video controls>
+                    <source src="ab.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3>Video AB</h3>
+            </div>
+            <div class="portfolio-item">
+                <video controls>
+                    <source src="bc.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+            
+                </video>
+                <h3>Video EF</h3>
+            </div>
+        </div>
+    </section>
+    <section class="collaborator-spotlight fade-in">
+    <h2><i class="fas fa-star"></i> Collaborator Spotlight</h2>
+    <div class="spotlight-container">
+        <div class="collaborator-profile">
+            <img src="iisc.jpg" alt="IISC Bangalore" class="profile-img" loading="lazy">
+            <h3 class="iisc-name">IISC Bangalore</h3>
+            <p class="iisc-description"><em>Institute for Advanced Research in Science and Technology</em></p>
+        </div>
+        <p class="iisc-info">IISC Bangalore is one of India's premier institutions, renowned for its groundbreaking research in various scientific fields, including astrophysics and quantum mechanics. Akash is honored to collaborate with IISC Bangalore in advancing the theory of everything and unraveling the mysteries of the universe. Learn more about this collaboration in the <strong><a href="#projects">Research Projects</a></strong> section.</p>
+    </div>
+    <button class="btn">Learn More</button>
+</section>
+ <section class="collaboration fade-in">
+    <h2><i class="fas fa-handshake"></i> Collaboration</h2>
+    <p>Interested in joining forces? Let's explore the universe together! Share your ideas or collaborate on research projects with me.</p>
+    <div class="collaboration-container">
+        <form action="#" method="post" class="collaboration-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message or Collaboration Idea" required></textarea>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+</section>
+    <section class="testimonials fade-in">
+    <h2><i class="fas fa-comments"></i> 
+Testimonials</h2>
+    <div class="testimonial-container">
+        <div class="testimonial-item">
+            <p class="quote">"Akash's research changed my perspective on the universe!"</p>
+            <p class="author">- A Fellow Researcher</p>
+        </div>
+        <div class="testimonial-item">
+            <p class="quote">"His approach to antigravity is groundbreaking!"</p>
+            <p class="author">- A Physics Enthusiast</p>
+        </div>
+        <div class="testimonial-item">
+            <p class="quote">"A truly innovative mind with the ability to think beyond the known." </p>
+            <p class="author">- A Scientist</p>
+        </div>
+    </div>
+</section>
+
+    <section class="achievements fade-in">
+        <h2><i class="fas fa-trophy"></i> Achievements</h2>
+        <div class="counter">
+            <h3>15</h3>
+            <p>Published Papers</p>
+        </div>
+        <div class="counter">
+            <h3>50+</h3>
+            <p>Research Collaborations</p>
+        </div>
+    </section>
+       
+    <footer>
+    <p>&copy; 2025 Akash's Portfolio | All Rights Reserved</p>
+    <!-- Social Media Icons -->
+    <div style="margin-top: 15px;">
+        <a href="https://www.instagram.com/akash_insight" target="_blank" style="margin: 0 10px; text-decoration: none;">
+            <i class="fab fa-instagram" style="font-size: 1.5rem; color: #E4405F;"></i> <!-- Instagram pink -->
+        </a>
+        <a href="https://www.linkedin.com/in/akash" target="_blank" style="margin: 0 10px; text-decoration: none;">
+            <i class="fab fa-linkedin" style="font-size: 1.5rem; color: #0077B5;"></i> <!-- LinkedIn blue -->
+        </a>
+        <a href="mailto:akashnaikhnnaik@gmail.com" style="margin: 0 10px; text-decoration: none;">
+            <i class="fas fa-envelope" style="font-size: 1.5rem; background: linear-gradient(to right, #ff3e00, #ffcc00, #33cc33, #0066ff); -webkit-background-clip: text; color: transparent;"></i> <!-- Multi-color email -->
+        </a>
+    </div>
+</footer>
+
+    <script>
+        // Parallax Scrolling for Header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            let offset = window.scrollY;
+            header.style.backgroundPositionY = `${offset * 0.5}px`;
+        });
+
+        // Fade-in effect on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+
+        // Listen for scroll event
+        window.addEventListener('scroll', fadeInOnScroll);
+
+        // Run immediately on page load to handle any initial visibility
+        fadeInOnScroll();
+    </script>
+    <script>
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'H' || event.key === 'h') {
+            alert("You found the Easter egg! 🌟");
+        }
+    });
+</script>
+<script>
+    let currentIndex = 0;
+    const testimonials = document.querySelector('.testimonial-container');
+    const totalTestimonials = document.querySelectorAll('.testimonial-item').length;
+
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % totalTestimonials;
+        testimonials.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }, 3000); // Change slide every 3 seconds
+</script>
+</body>
+</html>
